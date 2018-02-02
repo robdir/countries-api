@@ -1,40 +1,33 @@
 const express = require('express')
 const cors = require('cors')
-const https = require('https')
-
+const {countries} = require('./routes')
 
 const PORT = process.env.PORT || 3030
 
-let app = express()
+const app = express()
+
+app
+    .use(countries)
+    .use((req, res, next) => {
+        const err = new Error('Not Found')
+        err.status = 404
+        next(err)
+    })
+
+    .use((err, req, res, next) => {
+        res.status(err.status || 500)
+        res.send({
+            message: err.message,
+            error: app.get('env') === 'development' ? err : {}
+        })
+    })
+
+
 
 app.get('/', (req, res) => {
-    res.send('Whattup')
+    res.send('Whattup, welcome to this shitty server - try /countries')
 })
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`)
 })
-
-const url = 'https://restcountries.eu/rest/v2/name/united'
-
-var req = https.get(url, (res) => {
-
-    var bodyChunks = [];
-
-    res.on('data', (chunk) => {
-        bodyChunks.push(chunk);
-
-    }).on('end', () => {
-        var body = []
-        bodyChunks = bodyChunks.toString()
-        body.push(JSON.parse(bodyChunks));
-
-        app.get('/countries', (req, res) => {
-            res.send(body)
-        })
-    })
-});
-
-req.on('error', function (e) {
-    console.log('ERROR: ' + e.message);
-});
