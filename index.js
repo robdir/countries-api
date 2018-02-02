@@ -17,7 +17,24 @@ app.listen(PORT, () => {
 
 const url = 'https://restcountries.eu/rest/v2/name/united'
 
-app.get('/countries', (req, res) => {
-    const data = https.get(url)
-    res.send(data)
-})
+var req = https.get(url, function (res) {
+
+    var bodyChunks = [];
+
+    res.on('data', function (chunk) {
+        bodyChunks.push(chunk);
+        
+    }).on('end', function () {
+        var body = []
+        bodyChunks = bodyChunks.toString()
+        body.push(JSON.parse(bodyChunks));
+
+        app.get('/countries', (req, res) => {
+            res.send(body)
+        })
+    })
+});
+
+req.on('error', function (e) {
+    console.log('ERROR: ' + e.message);
+});
