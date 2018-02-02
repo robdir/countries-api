@@ -8,6 +8,7 @@
   "dependencies": {
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "https": "^1.0.0",
     "nodemon": "^1.14.12"
   },
   "scripts": {
