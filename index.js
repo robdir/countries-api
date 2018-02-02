@@ -17,14 +17,14 @@ app.listen(PORT, () => {
 
 const url = 'https://restcountries.eu/rest/v2/name/united'
 
-var req = https.get(url, function (res) {
+var req = https.get(url, (res) => {
 
     var bodyChunks = [];
 
-    res.on('data', function (chunk) {
+    res.on('data', (chunk) => {
         bodyChunks.push(chunk);
-        
-    }).on('end', function () {
+
+    }).on('end', () => {
         var body = []
         bodyChunks = bodyChunks.toString()
         body.push(JSON.parse(bodyChunks));
