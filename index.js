@@ -17,12 +17,7 @@ app.listen(PORT, () => {
 
 const url = 'https://restcountries.eu/rest/v2/name/united'
 
-const req = https.get(url, (res) => {
-    app.get('/countries', (req, res) => {
-        res.send(body)
-    })
-
-    req.on('error', (e) => {
-        console.log(e.message)
-    })
+app.get('/countries', (req, res) => {
+    const data = https.get(url)
+    res.send(data)
 })
