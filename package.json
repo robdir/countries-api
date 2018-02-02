@@ -6,6 +6,11 @@
   "author": "RW",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "nodemon": "^1.14.12"
+  },
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon --inspect ."
   }
 }
