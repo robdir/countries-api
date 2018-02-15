@@ -3,6 +3,10 @@ const https = require('https')
 
 const url = 'https://restcountries.eu/rest/v2/name/united'
 
+router.get('/', (req, res) => {
+    res.send('Whattup, welcome to this shitty server - try /countries')
+})
+
 var req = https.get(url, (res) => {
 
     var bodyChunks = [];
@@ -21,7 +25,7 @@ var req = https.get(url, (res) => {
     })
 });
 
-req.on('error', function (e) {
+req.on('error', (e) => {
     console.log('ERROR: ' + e.message);
 });
 

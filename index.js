@@ -22,12 +22,6 @@ app
         })
     })
 
-
-
-app.get('/', (req, res) => {
-    res.send('Whattup, welcome to this shitty server - try /countries')
-})
-
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`)
 })
