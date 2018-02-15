@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const request = require('request')
-const url = 'https://restcountries.herokuapp.com/api/v1/region/europe'
+const url = 'https://restcountries.eu/rest/v2/region/europe'
 const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 3030
@@ -18,8 +18,7 @@ res.send('Whattup - try /countries (if you dare)')
 })
 
 app.get('/countries', (req, res) => {
-    request(url, function(error, response, body) {
-        var data = JSON.parse(body);
+    request.get(url, function(error, response, body) {
         res.send(body)
     })
 })
