@@ -20,6 +20,7 @@ res.send('Whattup - try /countries')
 app.get('/countries', (req, res) => {
     request.get(url, function(error, response, body) {
         res.send(body)
+        console.log(body.length)
     })
 })
 
