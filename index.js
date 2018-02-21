@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const request = require('request')
-const url = 'https://restcountries.eu/rest/v2/region/europe'
+const url = 'https://restcountries.eu/rest/v2/regionalbloc/eu'
 const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 3030
@@ -14,7 +14,7 @@ console.log(`Server listening on port ${PORT}`)
 })
 
 app.get('/', (req, res) => {
-res.send('Whattup - try /countries (if you dare)')
+res.send('Whattup - try /countries')
 })
 
 app.get('/countries', (req, res) => {
