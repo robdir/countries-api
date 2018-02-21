@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3030
 const app = express()
 
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(cors())
 
 app.listen(PORT, () => {
 console.log(`Server listening on port ${PORT}`)
@@ -20,7 +21,6 @@ res.send('Whattup - try /countries')
 app.get('/countries', (req, res) => {
     request.get(url, function(error, response, body) {
         res.send(body)
-        console.log(body.length)
     })
 })
 
