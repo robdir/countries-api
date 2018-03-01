@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const axios = require('axios')
+const request = require('request')
 const url = 'https://restcountries.eu/rest/v2/regionalbloc/eu'
 const bodyParser = require('body-parser')
 
@@ -19,7 +19,7 @@ res.send('Whattup - try /countries')
 })
 
 app.get('/countries', (req, res) => {
-    axios.get(url, function(error, response, body) {
+    request.get(url, function(error, response, body) {
         res.send(body)
     })
 })
