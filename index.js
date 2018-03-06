@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const request = require('request')
-const url = 'https://restcountries.eu/rest/v2/regionalbloc/eu'
+const url = 'https://restcountries.eu/rest/v2/all'
 const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 3030
